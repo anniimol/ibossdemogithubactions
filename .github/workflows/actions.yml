@@ -6,6 +6,7 @@ on:
       servername:
         description: 'adding the name of the server in the server group'
         required: true
+        default: "hi"
 
       
 
