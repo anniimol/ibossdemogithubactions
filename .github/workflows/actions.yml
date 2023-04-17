@@ -1,28 +1,18 @@
-name: Push-to-EC2
+name: Greeting on variable day
 
-# Trigger deployment only on push to main branch
 on:
-  workflow_dispatch:
-    inputs:
-      servergroup:
-        description: 'servergroup version'
-        required: true
+  workflow_dispatch
 
-  
+env:
+  DAY_OF_WEEK: Monday
+
 jobs:
-  deploy:
-    name: Deploy to EC2 on main branch push
+  greeting_job:
     runs-on: ubuntu-latest
+    env:
+      Greeting: Hello
     steps:
-    #checkout the code from github
-      - name: Checkout the files
-        uses: actions/checkout@v2
-        
-#     #Deploty the code to target server
-#       - name: Deploy to Server 1
-#         uses: easingthemes/ssh-deploy@main
-#         env:
-#           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-#           REMOTE_HOST: ${{ secrets.HOST_DNS }}
-#           REMOTE_USER: ${{ secrets.USERNAME }}
-#           TARGET: /var/www
+      - name: "Say Hello Mona it's Monday"
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Mona
