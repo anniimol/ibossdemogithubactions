@@ -1,10 +1,16 @@
 name: Greeting on variable day
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      DAY_OF_WEEK:
+        description: 'day of week'
+        required: true
+        default: 'sunday'
+      
 
 env:
-  DAY_OF_WEEK: Monday
+  DAY_OF_WEEK: ${{ github.event.inputs.DAY_OF_WEEK }}
 
 jobs:
   greeting_job:
@@ -13,6 +19,6 @@ jobs:
       Greeting: Hello
     steps:
       - name: "Say Hello Mona it's Monday"
-        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        run: echo "$Greeting $First_Name. Today is ${{ github.event.inputs.DAY_OF_WEEK }}"
         env:
           First_Name: Mona
