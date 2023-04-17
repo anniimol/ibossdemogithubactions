@@ -2,15 +2,11 @@ name: Push-to-EC2
 
 # Trigger deployment only on push to main branch
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       servergroup:
         description: 'servergroup version'
         required: true
-        default: '2.5.3'
 
   
 jobs:
