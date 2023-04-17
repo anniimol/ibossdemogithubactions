@@ -1,24 +1,23 @@
-name: Greeting on variable day
+name: giving server names by developers
 
 on:
   workflow_dispatch:
     inputs:
-      DAY_OF_WEEK:
-        description: 'day of week'
+      servername:
+        description: 'adding the name of the server in the server group'
         required: true
-        default: 'sunday'
+
       
 
-env:
-  DAY_OF_WEEK: ${{ github.event.inputs.DAY_OF_WEEK }}
+# env:
+#   servername: ${{ github.event.inputs.servername }}
 
 jobs:
-  greeting_job:
+  servernamejob:
     runs-on: ubuntu-latest
-    env:
-      Greeting: Hello
+#     env:
+#       Greeting: Hello
     steps:
-      - name: "Say Hello Mona it's Monday"
-        run: echo "$Greeting $First_Name. Today is ${{ github.event.inputs.DAY_OF_WEEK }}"
-        env:
-          First_Name: Mona
+      - name: "Say servername"
+        run: echo "server is ${{ github.event.inputs.servername }}"
+
